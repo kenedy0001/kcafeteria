@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    ul,li{
+      display:none;
+    }
+  </style>
+<div class="row m-4">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 p-3 card bg-warning">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form | crispy }} 
+            <center class="row">
+              <div class="col-6">
+                <input class="btn btn-primary" type="submit" value="Register.">
+              </div>
+              <div class="col-6">
+                <div class=" d-flex justify-content-center links">
+                  <a  href="{% url 'login' %}" class="btn btn-primary ml-2 text-light">login</a>
+               </div>
+              </div>
+            </center> 
+          </form>        
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <script type="text/javascript">
+    var form_fields = document.getElementsByTagName('input') 
+		form_fields[1].placeholder='2547...  or 2541...';
+    form_fields[1].type ='number';
+		form_fields[2].placeholder='Enter password ...';
+		form_fields[3].placeholder='Re-enter Password ...';
+  </script>
+{% endblock content %}   
